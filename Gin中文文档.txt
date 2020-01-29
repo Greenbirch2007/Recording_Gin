@@ -1,0 +1,143 @@
+
+
+Gin中文文档
+
+https://www.jianshu.com/p/4a16db3a02f8
+
+
+Gin是一个用golang编写的web框架
+
+它是类似于martini但拥有更好性能的APIKUANGJAI
+
+由于httprouter，速度提高了40倍
+
+
+特性
+
+
+1.快速
+
+基于Radix树的路由，小内存占用。没有反射。可预测的api性能
+
+2. 支持中间件
+
+
+传入的http请求可以由一系列中间件和最终操作来处理。
+
+例如：Logger,Authorization,GZIP
+
+最终最终操作DB
+
+3. Crash处理
+
+Gin可以catch一个发生在HTTP请求中panic并recover它
+
+这样，你的服务器将始终可以用。
+
+例如，可以向Sentry报告这个panic
+
+
+4. JSON验证
+
+
+Gin可以解析并验证请求的JSON,例如检查所需值的存在
+
+
+5. 路由组
+
+更好地组织路由。是否需要授权，
+不同的api版本，这些组可以无限制地嵌套而不会降低性能
+
+
+6.错误管理
+
+
+Gin提供了一种方便的方法来手机HTTP请求期间发生的所有错误。
+最终，中间件可以将它们写入日志文件，数据库并通过网络发送
+
+
+7. 内置渲染
+
+Gin为JSON,XML,HTML渲染提供了易于使用的api
+
+
+8. 可扩展性
+
+新建一个中间件很简单
+
+
+1. 安装gin
+
+github.com/gin-gonic/gin
+
+2. 将gin引入到代码中
+
+
+import "gin-gonic/gin"
+
+
+3. (可选)如果使用诸如http.StatusOK之类的常量，
+则需要引入net/http包
+
+import "net/http"
+
+可以使用Govendor工具创建项目
+
+1. go get govendor
+2. 创建项目并且cd到项目目录中
+
+3. 使用govendor初始化项目，并且引入gin
+4. 复制启动文件模板到项目目录中
+
+5. 启动项目
+
+
+基准测试
+
+Gin使用了自定义版本的HttpRouter
+(1) 在一定的时间内实现的总调用数，越高越好
+(2) 单次操作耗时(ns/op),越低越好
+(3) 堆内存分配(B/op),越低越好
+(4) 每次操作的平均分配次数(allocs/op),越低越好
+
+
+特性
+
+
+Gin v1稳定的特性
+
+1. 零分配路由
+2. 仍然是最快的http路由器和框架
+3. 完整的单元测试支持
+4. 实战考研
+5.  api冻结，新版本的发布不会破坏你的代码
+
+
+Jsoniter
+
+使用jsoniter编译
+
+Gin使用encoding/json作为默认的json包，但是
+可以在编译中使用标签将其修改为jsoniter
+
+AsciiJSON
+
+
+使用AsciiJSON生成具有转义的非ASCII字符的ASCII-only JSON
+
+HTML渲染
+
+使用LoadHTMLGlob()或LoadHTMLFiles()
+
+
+自定义模板渲染器
+
+可以使用自定义的html模板渲染
+
+自定义分隔符
+
+https://www.jianshu.com/p/4a16db3a02f8
+
+
+
+
