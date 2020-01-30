@@ -136,7 +136,156 @@ HTML渲染
 
 自定义分隔符
 
-https://www.jianshu.com/p/4a16db3a02f8
+
+
+自定义模板功能
+
+HTTP2 server推送
+
+
+http.Pusher
+
+JSONP
+
+
+使用JSONP向不同域的服务器请求数据。如果查询参数存在回调，则将
+回调添加到响应体中
+
+
+Multipart/Urlencoded 绑定
+
+Multipart/Urllencoded 表单
+
+
+PureJSON
+
+通常，JSON使用unicode替换特殊HTML字符，
+如果要安字面对这些字符进行编码，则可以使用PureJSON
+
+Query和post form
+
+SecureJSON
+
+使用SecureJSON防止json劫持。如果给定的结构是数组值，则默认预置"while(1),"到响应体
+
+xml/json/yaml/protobuf渲染
+
+
+上传文件
+
+
+单个文件
+
+多文件
+
+不使用默认的中间件
+
+
+使用 
+
+r := gin.New()
+
+
+代替
+
+// Default 使用Logger和Recovery中间件
+
+r := gin.Default()
+
+
+
+从reader读取数据
+
+如何重启或停止web服务器
+
+
+可以使用fvbock/endless来替换默认的ListenAndServe
+
+
+router := gin.Default()
+router.GET("/",handler)
+// [...]
+
+endless.ListenAndServe(":4242",router)
+替代方案
+
+
+1.manners:可以关闭go http服务器
+2. graceful:Graceful是一个go扩展包，可以关闭http.handler服务器
+3. grace:go服务器平滑重启和零停机时间部署
+
+
+可以考虑http.Server内置的Shutdown()方法关机
+
+
+使用BasicAuth中间件
+
+
+使用HTTP方法
+
+使用中间件
+
+
+只绑定url查询字符串
+
+ShouldBindQuery函数只绑定url查询参数而忽略post数据
+
+在中间件中使用Goroutine
+
+当在中间件或handler中启动新的Goroutine时，
+不能使用原始的上下文，必须使用只读副本
+
+
+多模板
+
+
+Gin默认允许值使用一个html模板
+
+
+如何记录日志
+
+
+定义路由日志的格式
+
+默认的路由日志格式
+
+
+如果想要以指定的格式(例如JSON,key values或其他格式)
+记录信息，则可以使用gin.DebugPrintRouteFunc指定格式
+
+
+使用标准日志包记录所有路由，但可以使用其他满足需求的日志工具
+
+
+将request body绑定到不同的结构体中
+
+一般通过调用c.Request.Body方法绑定数据，但不能多次调用这个方法
+
+
+要想多次绑定，可以使用c.ShouldBindBodyWith
+
+
+
+用户
+
+使用Gin web框架的
+
+使用 Gin web 框架的知名项目：
+
+gorush：Go 编写的通知推送服务器。
+fnproject：原生容器，云 serverless 平台。
+photoprism：由 Go 和 Google TensorFlow 提供支持的个人照片管理工具。
+krakend：拥有中间件的超高性能 API 网关。
+picfit：Go 编写的图像尺寸调整服务器。
+gotify：使用实时 web socket 做消息收发的简单服务器。
+cds：企业级持续交付和 DevOps 自动化开源平台。
+
+
+
+
+
+
+
 
 
 
